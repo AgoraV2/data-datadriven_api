@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- https://allseenalliance.org/developers/learn/core/system-description/data-exchange
+     see : "Data types supported by the AllJoyn framework" -->
+<node>
+    <interface name="com.agora.v2.Presence">
+        <property name="Presence" type="u" access="read">
+            <!--  0 = Absent, 1 = Retour prochain, 2 = Presence -->
+            <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
+        </property>
+        <property name="Source" type="s" access="read">
+            <!--  Contains the name the publisher -->
+            <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
+        </property>
+    </interface>
+    <interface name="com.agora.v2.HomeCinema">
+        <property name="HomeCinema" type="b" access="read">
+            <!--  True = HomeCinema ON, False = HomeCinema OFF -->
+            <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
+        </property>
+        <property name="Source" type="s" access="read">
+            <!--  Contains the name the publisher -->
+            <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
+        </property>
+    </interface>
+    <interface name="com.agora.v2.InComingCall">
+        <property name="CallInfo" type="(uus)" access="read">
+            <!--
+               Priority  |  unsigned  | 0: "Normal"      , 1:  "Emergency"   , 2 : "None" 
+               Status    |  unsigned  | 0: "IncomingCall", 1:  "OutgoingCall", 2 : "HungUp"
+               CallerID  |  string    | "01 02 03 04 05"  (Phone_number)
+               --> 
+            <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
+        </property>
+    </interface>
+    <interface name="com.agora.v2.Leak">
+        <property name="WaterLeak" type="b" access="read">
+            <!--  True = Water leak Detected, False = No Water Leak Detected -->
+            <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
+        </property>
+    </interface>
+    <interface name="com.agora.v2.Power">
+        <property name="Economy" type="u" access="read">
+            <!--  0 = LowPower Consumption Requested , 1 =  Norma Power Consumption Requested -->
+            <annotation name="org.freedesktop.DBus.Property.EmitsChangedSignal" value="true"/>
+        </property>
+    </interface>
+</node>
+
