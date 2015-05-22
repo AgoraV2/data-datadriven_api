@@ -84,9 +84,7 @@ int main(int argc, char** argv)
     return EXIT_FAILURE;
   }
   
-  string path_root = "/dsi750";
-  
-  string path = string(path_root);
+  string path = "/" + string(myName);
   unique_ptr<A_HomeCinema> homeCinema = unique_ptr<A_HomeCinema>(new A_HomeCinema(advertiser, false, path.c_str()));
     
   if (ER_OK == homeCinema->GetStatus()) {
