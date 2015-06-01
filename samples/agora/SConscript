@@ -20,10 +20,30 @@ apps = []
 generated = env.CodeGen('dm-agora-demo-v2')
 generated_src = filter(lambda f: not '.h' in f.name, generated)
 
+################################################
 
-# build provider/consumer app
-provider = env.Program(target='agora',
+agora = env.Program(target='agora',
                        source=['agora.cc', generated_src])
-apps.append(provider)
+apps.append(agora)
+
+################################################
+# SAGEMCOM test binaries for interop tests
+
+scom_presence_stub = env.Program(target='scom-presence-stub',
+                       source=['scom-presence-stub.cc', generated_src])
+apps.append(scom_presence_stub)
+
+
+scom_call_notifier_stub = env.Program(target='scom-call-notifier-stub',
+                        source=['scom-call-notifier-stub.cc', generated_src])
+apps.append(scom_call_notifier_stub)
+
+
+scom_logger = env.Program(target='scom-logger',
+                        source=['scom-logger.cc', generated_src])
+apps.append(scom_logger)
+
+################################################
+
 
 Return('apps')
